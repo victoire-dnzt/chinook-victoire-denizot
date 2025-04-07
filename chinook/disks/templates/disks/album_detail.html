@@ -1,0 +1,28 @@
+<!-- templates/albums/album_detail.html -->
+<h1>{{ album.title }} - {{ album.artist }}</h1>
+<h2>Liste des titres</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Durée</th>
+            <th>Prix</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for track in tracks %}
+            <tr>
+                <td>{{ track.title }}</td>
+                <td>{{ track.author }}</td>
+                <td>{{ track.duration }}</td>
+                <td>{{ track.price }} €</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">Aucun titre trouvé pour cet album.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'album_list' %}">Retour à la liste des albums</a>

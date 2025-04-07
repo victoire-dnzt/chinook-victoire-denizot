@@ -1,0 +1,16 @@
+<!-- templates/albums/album_list.html -->
+<form method="get" action="">
+    <input type="text" name="search" value="{{ search_query }}" placeholder="Rechercher un album">
+    <button type="submit">Rechercher</button>
+</form>
+
+<h1>Liste des albums</h1>
+<ul>
+    {% for album in albums %}
+        <li>
+            <a href="{% url 'album_detail' album.id %}">{{ album.title }} - {{ album.artist }}</a>
+        </li>
+    {% empty %}
+        <li>Aucun album trouvé.</li>
+    {% endfor %}
+</ul>
